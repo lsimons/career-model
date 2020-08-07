@@ -1,0 +1,40 @@
+{
+  "name": "career-model",
+  "private": true,
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">= 12.7.0 <= 13.0.0",
+    "npm": ">= 6.10.0 <= 7.0.0",
+    "yarn": ">= 1.17.3 <= 2.0.0",
+    "pnpm": ">= 5.4.1 <= 6.0.0"
+  },
+  "scripts": {
+    "recursive-test": "jest",
+    "test": "echo run pnpm recursive test"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-router": "~4.4.0",
+    "@vue/cli-plugin-unit-jest": "~4.4.0",
+    "@vue/cli-plugin-vuex": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "pnpm": "^5.4.12"
+  }
+}

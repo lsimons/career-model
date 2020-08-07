@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTag -->
+<html lang="en">
+<head>
+    <title>Testing visualization of career path</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+<textarea id="competency-list-software-engineer" style="height: 100px; width: 1600px; box-sizing: border-box; display: none">
+    Competency Area,Competency Group,Competency
+    Requirements, Elicitation
+    Requirements, Elicitation, Design Thinking
+    Requirements, Elicitation, Event Storming
+    Requirements, Elicitation, Prototyping
+    Requirements, Analysis
+    Requirements, Specification
+    Requirements, Specification, User Experience
+    Requirements, Specification, User Experience, Usability
+    Requirements, Specification, User Stories
+    Requirements, Specification, NFRs
+
+    Design, Architecture, Models
+    Design, Architecture, Models, UML
+    Design, Architecture, Models, ORM
+    Design, Architecture, Models, ER
+    Design, Architecture, Models, Tools
+    Design, Architecture, Models, Tools, Enterprise Architect
+    Design, Architecture, Models, Tools, Visio
+    Design, Architecture, Methods
+    Design, Architecture, Methods
+    Design, Architecture, Methods, C4
+    Design, Architecture, Design Patterns
+    Design, Architecture, Diagrams
+    Design, Visual
+    Design, Visual, Graphics
+    Design, Visual, Graphics, Color
+    Design, Visual, Data
+    Design, Visual, UI, Wireframes
+    Design, Visual, UI, Axure
+
+    Construction, Coding
+    Construction, Coding, Secure Development
+    Construction, Debugging
+    Construction, Refactoring
+
+    Test, Unit Test
+    Test, Unit Test, TDD
+    Test, Integration Test
+    Test, Pentest
+    
+    Quality, Pairing
+    Quality, Review
+    Quality, Review, Design Review
+    Quality, Review, Code Review
+    Quality, Review, Security Review
+    Quality, Review, Coding Standards
+    Quality, Review, Coding Standards, Tools
+    Quality, Review, Inspection
+    Quality, Review, Inspection, Formal Inspection
+    Quality, Review, Inspection, Audit
+    Quality, Review, Inspection, Audit, ISO 25010
+    Quality, Review, Inspection, Audit, ISO 90003
+    Quality, Measurement
+    Quality, Measurement, Tools, SonarQube
+    Quality, Measurement, Tools, Coverity
+    Quality, Measurement, Tools, Black Duck
+    Quality, Measurement, Tools, TIOBE
+
+    DevOps
+    DevOps, Automation
+    DevOps, Automation, Configuration Management
+    DevOps, Service Management
+    DevOps, Service Management, ITIL
+    DevOps, Continuous Delivery
+
+    Project Management
+    Project Management, Estimation
+    Project Management, Planning
+    Project Management, Planning, Risk Management
+    Project Management, Planning, Technical Debt
+
+    Process
+    Process, Agile
+    Process, Agile, XP
+    Process, Agile, Scrum
+    Process, Agile, Scrum, SAFe
+    Process, Agile, Scrum, Kanban
+    Process, Facilitation
+
+    Technology
+    Technology, Web Frontend
+    Technology, Web Frontend, Frameworks
+    Technology, Web Frontend, Frameworks, Angular
+    Technology, Web Frontend, Frameworks, React
+    Technology, Web Frontend, Frameworks, Vue
+    Technology, Web Backend
+    Technology, Web Backend, Frameworks
+    Technology, Web Backend, Frameworks, Spring
+    Technology, Web Backend, Frameworks, ASP.Net
+    Technology, Data
+    Technology, Cloud
+    Technology, Cloud, AWS
+    Technology, Cloud, Azure
+    Technology, Cloud, GCP
+    Technology, Languages
+    Technology, Languages, Java
+    Technology, Languages, C#
+    Technology, Languages, C/C++
+    Technology, Languages, JavaScript
+    Technology, Languages, JavaScript, TypeScript
+    Technology, Languages, Python
+    Technology, Languages, Go
+    Technology, Languages, PHP
+    Technology, Languages, Rust
+
+    Technology, Tools
+    Technology, Tools, IDEs
+    Technology, Tools, IDEs, IDEA
+    Technology, Tools, IDEs, Visual Studio
+    Technology, Tools, IDEs, XCode
+</textarea>
+<textarea id="competency-list-software-engineer-skipped" style="height: 100px; width: 1600px; box-sizing: border-box; display: none">
+    Technology, Mobile
+    Technology, Mobile, iOS
+    Technology, Mobile, Android
+    Technology, Mobile, Web
+    Technology, Desktop
+    Technology, Desktop, Windows
+    Technology, Desktop, Mac
+    Technology, Operating Systems
+    Technology, AI
+    Technology, IoT
+    Technology, Platform
+    Technology, Platform, Containers
+    Technology, Platform, Containers, Docker
+    Technology, Platform, Containers, Kubernetes
+    Technology, Integration
+
+    Process, Waterfall
+    Process, Waterfall, RUP
+</textarea>
+<textarea id="competency-list-colleague" style="height: 100px; width: 1600px; box-sizing: border-box; display: none">
+    Competency Area,Competency Group,Competency
+    Foundations
+    Foundations, Ethics
+    Foundations, Personal Productivity
+    Foundations, Personal Productivity, Getting Things Done
+    Foundations, Personal Productivity, Office365
+    Foundations, Learning
+    Foundations, Learning, Reading
+    Foundations, Communication
+    Foundations, Communication, Teamwork
+    Foundations, Communication, Teamwork, Meetings
+    Foundations, Communication, Presenting
+    Foundations, Communication, Presenting, PowerPoint
+    Foundations, Communication, Presenting, PowerPoint
+    Foundations, Communication, Writing
+    Foundations, Communication, Writing, Technical Documentation
+    Foundations, Communication, Digital
+    Foundations, Communication, Negotiation
+    Foundations, Business
+    Foundations, Business, Accounting
+    Foundations, Business, Sales
+
+    Domain
+    Domain, Finance
+    Domain, Finance, Banking
+    Domain, Finance, Asset Management
+    Domain, Energy
+    Domain, Transport & Logistics
+    Domain, Transport & Logistics, Water
+    Domain, Transport & Logistics, Air
+    Domain, Transport & Logistics, Road
+    Domain, Manufacturing
+    Domain, Retail
+
+    Leadership
+    Leadership, Coaching
+    Leadership, Teaching
+    Leadership, Teams
+    Leadership, Teams, Recruiting
+    Leadership, Strategy
+    Leadership, Servant
+    Leadership, Situational
+
+    Company
+    Company, Culture
+    Company, Business Model
+    Company, Organization
+</textarea>
+<script>
+</script>
+<div id="app">
+    <competency-graph
+            career="Software Engineer"
+            maxLevel=1
+            width=900
+            height=900
+            radius=30></competency-graph>
+    <!--<competency-graph
+            career="Colleague"
+            maxLevel=1
+            width=400
+            height=400
+            radius=30></competency-graph>-->
+</div>
+<script>
+  Vue.config.devtools = true;
+  Vue.component('competency-graph', {
+    props: {
+      career: String,
+      maxLevel: Number,
+      width: Number,
+      height: Number,
+      radius: Number
+    },
+    template: `<div :style="{ width: width + 'px', height: height + 'px', border: '1px solid black',
+                        boxSizing: 'border-box' }">
+                    <svg width="100%" height="100%" v-bind:id="id">
+                    </svg>
+                </div>`,
+    data() {
+      return {
+      }
+    },
+    computed: {
+      careerSlug: function() {
+        return this.career.toLowerCase().replace(" ", "-");
+      },
+      id: function() {
+        return "competency-graph-" + this.careerSlug;
+      },
+      competencies: function() {
+        const career = this.career;
+        const careerSlug = this.careerSlug;
+        const maxLevel = this.maxLevel;
+
+        function loadCompetencies(career) {
+          const competencies = {
+            "name"    : career,
+            "type"    : "Career",
+            "children": []
+          };
+
+          function ensureArea(name) {
+            const area = name.trim();
+            const areas = competencies.children;
+            for (let i = 0; i < areas.length; i++) {
+              if (areas[i].name === area) {
+                return areas[i];
+              }
+            }
+            const areaObject = {
+              "name"    : area,
+              "type"    : "Area",
+              "children": []
+            };
+            competencies.children.push(areaObject);
+            return areaObject;
+          }
+
+          function ensureCompetency(areaName, competencyNames, level, parent) {
+            const area = areaName.trim();
+            if (parent === undefined) {
+              parent = ensureArea(areaName);
+            }
+            if (competencyNames.length === 0 || maxLevel === 0) {
+              return;
+            }
+            const competencies = [];
+            for (let i = 0; i < competencyNames.length; i++) {
+              competencies.push(competencyNames[i].trim());
+            }
+
+            const competency = competencies[0];
+            const children = parent.children;
+            let competencyObject;
+            for (let i = 0; i < children.length; i++) {
+              if (children[i].name === competency) {
+                competencyObject = children[i];
+                break;
+              }
+            }
+            if (competencyObject === undefined) {
+              competencyObject = {
+                "name"    : competency,
+                "type"    : "Competency",
+                "children": []
+              };
+              parent.children.push(competencyObject);
+            }
+
+            if (competencies.length > 1 && level < maxLevel) {
+              ensureCompetency(area, competencies.slice(1), level + 1, competencyObject);
+            }
+          }
+
+          const competencyCsv = document.querySelector(`#competency-list-${careerSlug}`).textContent.trim();
+          const lines = competencyCsv.split("\n");
+          for (let i = 1; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (line === "") {
+              continue;
+            }
+            const tuple = line.split(",");
+            ensureCompetency(tuple[0], tuple.slice(1), 1);
+          }
+
+          return competencies;
+        }
+
+        const competencies = loadCompetencies(career);
+        console.log("competencies", competencies);
+        return competencies;
+      }
+    },
+    mounted() {
+      const width = this.width;
+      console.log("width", width);
+      const height = this.height;
+      console.log("height", height);
+      const radius = this.radius;
+      console.log("radius", radius);
+      const root = d3.hierarchy(this.competencies);
+      const links = root.links();
+      console.log("links", links);
+      const nodes = root.descendants();
+      console.log("nodes", nodes);
+
+      const simulation = d3.forceSimulation(nodes)
+        .force("center", d3.forceCenter(this.width / 2, this.height / 2))
+        .force("link",
+          d3
+            .forceLink(links)
+            .id(d => d.id)
+            .distance(10)
+            .strength(0.8))
+        .force("charge", d3.forceManyBody().strength(-10))
+        .force("collide", d3.forceCollide().radius(function (d) {
+          if (d.data.type === "Career") {
+            return 10 + radius * 3;
+          } else if (d.data.type === "Area") {
+            return 10 + radius * 2;
+          } else {
+            return 10 + radius;
+          }
+        }).iterations(2));
+      console.log("simulation", simulation);
+
+      this.svg = d3.select(this.$el.querySelector('#' + this.id));
+      this.graph = this.svg.append("g");
+      const linkLayer = this.graph.append("g")
+        .attr("stroke", "#000")
+        .attr("stroke-opacity", 1);
+      const link = linkLayer
+        .selectAll("line")
+        .data(links)
+        .join("line");
+      const nodeLayer = this.graph.append("g")
+        .attr("fill", "#FFF")
+        .attr("stroke", "#000")
+        .attr("stroke-width", 1.5);
+      const node = nodeLayer
+        .selectAll("circle")
+        .data(nodes)
+        .join("circle")
+        .attr("fill", function (d) {
+          if (d.data.type === "Career") {
+            return "#FBF";
+          } else if (d.data.type === "Area") {
+            return "#FFB";
+          } else {
+            return "#FFF";
+          }
+        })
+        .attr("r", function (d) {
+          if (d.data.type === "Career") {
+            return radius * 3;
+          } else if (d.data.type === "Area") {
+            return radius * 2;
+          } else {
+            return radius;
+          }
+        });
+
+      const nodeLabelLayer = this.graph.append("g")
+        .attr("font-family", "Arial, Helvetica, sans-serif");
+
+      const nodeLabel = nodeLabelLayer.selectAll("text")
+        .data(nodes)
+        .join("text")
+        .attr("text-anchor", "middle")
+        .style("text-shadow", function(d) {
+          if (d.data.type === "Career") {
+            return "0 2px 0 #FBF, 2px 0 0 #FBF, 0 -2px 0 #FBF, -2px 0 0 #FBF";
+          } else if (d.data.type === "Area") {
+            return "0 2px 0 #FFB, 2px 0 0 #FFB, 0 -2px 0 #FFB, -2px 0 0 #FFB";
+          } else {
+            return "0 2px 0 #FFF, 2px 0 0 #FFF, 0 -2px 0 #FFF, -2px 0 0 #FFF";
+          }
+        })
+        .text(d => d.data.name);
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+
+        nodeLabel
+          .attr("x", d => d.x)
+          .attr("y", d => d.y + 5);
+      });
+    }
+  });
+
+  new Vue({el: '#app'});
+</script>
+</body>
+</html>

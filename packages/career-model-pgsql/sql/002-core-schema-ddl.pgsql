@@ -43,3 +43,5 @@ CREATE TABLE cm__competency2competency_areas (
       REFERENCES cm__areas (oid)
       ON DELETE CASCADE
 );
+
+COMMIT;

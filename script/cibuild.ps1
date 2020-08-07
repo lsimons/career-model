@@ -12,6 +12,10 @@ Write-Notice "==> cibuild"
 
 Invoke-Script "bootstrap.ps1"
 Invoke-Script "setup.ps1"
-Invoke-Script "server.ps1"
+Push-Location $ScriptDir
+$ServerJob = Start-Job -ScriptBlock { pwsh -File "server.ps1" }
+Pop-Location
 Invoke-Script "test.ps1"
+Receive-Job ${ServerJob}
+Remove-Job -Force ${ServerJob}
 Invoke-Script "destroy.ps1"

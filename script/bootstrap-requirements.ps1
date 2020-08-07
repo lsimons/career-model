@@ -33,6 +33,7 @@ Test-Command-Available node
 
 Install-Node-Library pnpm
 
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Install-Module "PSScriptAnalyzer"
 
 if ($script:MissingDependency)

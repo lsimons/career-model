@@ -7,7 +7,7 @@ $CommonScript          = Join-Path $ScriptDir "common.ps1"
 Write-Notice "Analyzing PowerShell…"
 
 $errors = Invoke-ScriptAnalyzer $ScriptDir `
-    -ExcludeRule PSUseBOMForUnicodeEncodedFile
+    -ExcludeRule PSUseBOMForUnicodeEncodedFile,PSAvoidUsingPositionalParameters
 
 if ($errors)
 {

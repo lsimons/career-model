@@ -1,0 +1,184 @@
+# Competency Area,Competency Group,Competency
+Requirements, Elicitation
+Requirements, Elicitation, Design Thinking
+Requirements, Elicitation, Event Storming
+Requirements, Elicitation, Prototyping
+Requirements, Analysis
+Requirements, Specification
+Requirements, Specification, User Experience
+Requirements, Specification, User Experience, Usability
+Requirements, Specification, User Stories
+Requirements, Specification, NFRs
+
+Design, Architecture, Models
+Design, Architecture, Models, UML
+Design, Architecture, Models, ORM
+Design, Architecture, Models, ER
+Design, Architecture, Models, Tools
+# Design, Architecture, Models, Tools, EA
+Design, Architecture, Models, Tools, Visio
+Design, Architecture, Methods
+Design, Architecture, Methods
+Design, Architecture, Methods, C4
+Design, Architecture, Design Patterns
+Design, Architecture, Diagrams
+Design, Visual
+Design, Visual, Graphics
+Design, Visual, Graphics, Color
+Design, Visual, Data
+Design, Visual, UI, Wireframes
+Design, Visual, UI, Axure
+
+Construction, Coding
+Construction, Coding, Secure Coding
+Construction, Debugging
+Construction, Refactoring
+
+Test, Unit Test
+Test, Unit Test, TDD
+Test, Integration Test
+Test, Pentest
+
+Quality, Pairing
+Quality, Review
+Quality, Review, Design Review
+Quality, Review, Code Review
+Quality, Review, Security Review
+Quality, Review, Coding Standards
+Quality, Review, Coding Standards, Tools
+Quality, Review, Inspection
+Quality, Review, Inspection, Formal Inspection
+Quality, Review, Inspection, Audit
+Quality, Review, Inspection, Audit, ISO 25010
+Quality, Review, Inspection, Audit, ISO 90003
+Quality, Measurement
+Quality, Measurement, Tools, SonarQube
+# Quality, Measurement, Tools, Coverity
+# Quality, Measurement, Tools, Black Duck
+# Quality, Measurement, Tools, TIOBE
+
+DevOps
+DevOps, Automation
+DevOps, Automation, Config Management
+DevOps, Service Management
+DevOps, Service Management, ITIL
+DevOps, Continuous Delivery
+
+Project Management
+Project Management, Estimation
+Project Management, Planning
+Project Management, Planning, Risk Management
+Project Management, Planning, Technical Debt
+
+Process
+Process, Agile
+Process, Agile, XP
+Process, Agile, Scrum
+Process, Agile, Scrum, SAFe
+Process, Agile, Scrum, Kanban
+Process, Facilitation
+
+Technology
+Technology, Web Frontend
+Technology, Web Frontend, Frameworks
+Technology, Web Frontend, Frameworks, Angular
+# Technology, Web Frontend, Frameworks, React
+Technology, Web Frontend, Frameworks, Vue
+Technology, Web Backend
+Technology, Web Backend, Frameworks
+Technology, Web Backend, Frameworks, Spring
+Technology, Web Backend, Frameworks, ASP.Net
+Technology, Data
+Technology, Cloud
+Technology, Cloud, AWS
+Technology, Cloud, Azure
+# Technology, Cloud, GCP
+Technology, Languages
+Technology, Languages, Java
+Technology, Languages, C#
+# Technology, Languages, C/C++
+Technology, Languages, JavaScript
+# Technology, Languages, JavaScript, TypeScript
+Technology, Languages, Python
+Technology, Languages, Go
+# Technology, Languages, PHP
+# Technology, Languages, Rust
+
+Technology, Tools
+Technology, Tools, IDEs
+Technology, Tools, IDEs, IDEA
+Technology, Tools, IDEs, Visual Studio
+# Technology, Tools, IDEs, XCode
+
+
+
+# Not as relevant for us:
+# Competency Area,Competency Group,Competency
+Technology, Mobile
+# Technology, Mobile, iOS
+# Technology, Mobile, Android
+# Technology, Mobile, Web
+# Technology, Desktop
+# Technology, Desktop, Windows
+# Technology, Desktop, Mac
+# Technology, Operating Systems
+# Technology, AI
+# Technology, IoT
+Technology, Platform
+Technology, Platform, Containers
+Technology, Platform, Containers, Docker
+Technology, Platform, Containers, Kubernetes
+Technology, Integration
+
+# Process, Waterfall
+# Process, Waterfall, RUP
+
+
+# General skills:
+# Competency Area,Competency Group,Competency
+Foundations
+Foundations, Ethics
+Foundations, Personal Productivity
+Foundations, Personal Productivity, GTD
+Foundations, Personal Productivity, Office365
+Foundations, Learning
+Foundations, Learning, Reading
+Foundations, Communication
+Foundations, Communication, Teamwork
+Foundations, Communication, Teamwork, Meetings
+Foundations, Communication, Presenting
+Foundations, Communication, Presenting, PowerPoint
+Foundations, Communication, Presenting, PowerPoint
+Foundations, Communication, Writing
+Foundations, Communication, Writing, Tech Docs
+Foundations, Communication, Digital
+Foundations, Communication, Negotiation
+Foundations, Business
+Foundations, Business, Accounting
+Foundations, Business, Sales
+
+Domain
+Domain, Finance
+Domain, Finance, Banking
+Domain, Finance, Asset Management
+Domain, Energy
+Domain, Transport & Logistics
+Domain, Transport & Logistics, Water
+Domain, Transport & Logistics, Air
+Domain, Transport & Logistics, Road
+Domain, Manufacturing
+Domain, Retail
+
+Leadership
+Leadership, Coaching
+Leadership, Teaching
+Leadership, Teams
+Leadership, Teams, Recruiting
+Leadership, Strategy
+Leadership, Servant
+Leadership, Situational
+
+Company
+Company, Culture
+Company, Business Model
+Company, Organization

@@ -61,12 +61,14 @@ importers:
       '@vue/eslint-config-standard': 5.1.2_632b36c0702906f39b95cad4abadb4c0
       '@vue/test-utils': 1.0.3_d81dac297579cfd5597855dabf60f13b
       babel-eslint: 10.1.0_eslint@6.8.0
+      cypress: 3.8.3
       eslint: 6.8.0
       eslint-plugin-import: 2.22.0_eslint@6.8.0
       eslint-plugin-node: 11.1.0_eslint@6.8.0
       eslint-plugin-promise: 4.2.1
       eslint-plugin-standard: 4.0.1_eslint@6.8.0
       eslint-plugin-vue: 6.2.2_eslint@6.8.0
+      jest-serializer-vue: 2.0.2
       vue-template-compiler: 2.6.11
     specifiers:
       '@vue/cli-plugin-babel': ~4.4.6
@@ -80,12 +82,14 @@ importers:
       '@vue/test-utils': ^1.0.3
       babel-eslint: ^10.1.0
       core-js: ^3.6.5
+      cypress: 3.8.3
       eslint: ^6.8.0
       eslint-plugin-import: ^2.22.0
       eslint-plugin-node: ^11.1.0
       eslint-plugin-promise: ^4.2.1
       eslint-plugin-standard: ^4.0.1
       eslint-plugin-vue: ^6.2.2
+      jest-serializer-vue: ^2.0.2
       vue: ^2.6.11
       vue-router: ^3.4.2
       vue-template-compiler: ^2.6.11

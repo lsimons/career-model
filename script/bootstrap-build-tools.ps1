@@ -10,7 +10,7 @@ Write-Notice "Bootstrapping tools…"
 Push-Location $WorkDir
 try
 {
-    pnpm install -r
+    pnpm install -r --shamefully-hoist
 }
 finally
 {

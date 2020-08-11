@@ -146,7 +146,6 @@ class CompetencySimulation {
       .data(this.nodes)
       .join('circle')
       .attr('fill', function (d) {
-        // noinspection JSUnresolvedVariable
         const data = d.data || {}
         if (data.type === 'Category') {
           return categoryColor
@@ -155,14 +154,30 @@ class CompetencySimulation {
         }
       })
       .attr('r', function (d) {
-        if (d.data.type === 'Category') {
+        const data = d.data || {}
+        if (data.type === 'Category') {
           return sim.radius * 2
-        } else if (d.data.type === 'Area') {
+        } else if (data.type === 'Area') {
           return sim.radius * 1.5
         } else {
           return sim.radius
         }
       })
+    this.nodeSelection = this.addOnClick(this.nodeSelection)
+  }
+
+  addOnClick (selection) {
+    return selection.attr('onclick', function (d) {
+      const data = d.data || {}
+      if (data.type === 'Category') {
+        return `router.push("/category/${data.name}");`
+      } else if (data.type === 'Area') {
+        return `router.push("/area/${data.name}");`
+      } else {
+        return `router.push("/competency/${data.name}");`
+      }
+    })
+      .style('cursor', 'pointer')
   }
 
   redrawNodeLabels (selection) {
@@ -180,6 +195,7 @@ class CompetencySimulation {
         return `0 2px 0 ${color}, 2px 0 0 ${color}, 0 -2px 0 ${color}, -2px 0 0 ${color}`
       })
       .text(d => d.data.name)
+    this.nodeLabelSelection = this.addOnClick(this.nodeLabelSelection)
   }
 
   animate () {

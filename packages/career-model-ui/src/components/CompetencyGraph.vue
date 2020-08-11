@@ -172,9 +172,9 @@ class CompetencySimulation {
       if (data.type === 'Category') {
         return `router.push("/category/${data.name}");`
       } else if (data.type === 'Area') {
-        return `router.push("/area/${data.name}");`
+        return `router.push("/area/${data.category}/${data.name}");`
       } else {
-        return `router.push("/competency/${data.name}");`
+        return `router.push("/competency/${data.category}/${data.area}/${data.name}");`
       }
     })
       .style('cursor', 'pointer')
@@ -200,9 +200,9 @@ class CompetencySimulation {
 
   animate () {
     const sim = this
-    // setTimeout(function() {
-    //   sim.simulation.stop()
-    // }, 10000)
+    setTimeout(function() {
+      sim.simulation.stop()
+    }, 10000)
 
     function boundedX (d) {
       let radius = sim.radius
@@ -273,6 +273,8 @@ export default {
   name: 'CompetencyGraph',
   props: {
     category: String,
+    area: String,
+    competency: String,
     width: Number,
     height: Number,
     maxLevel: Number
@@ -332,6 +334,39 @@ export default {
         }
         redraw()
       })
+    },
+    filterByArea: function (competencyData) {
+      if (!this.area || this.area === '') {
+        return competencyData
+      }
+      const areaName = this.area
+      competencyData.children = competencyData.children.filter(area => area.name === areaName)
+      return competencyData
+    },
+    filterByCompetency: function (competencyData) {
+      if (!this.competency || this.competency === '') {
+        return competencyData
+      }
+      const competencyName = this.competency
+
+      function competencyFilter (competency) {
+        if (competency.name === competencyName) {
+          return true
+        }
+        if (competency.children.length === 0) {
+          return false
+        }
+
+        competency.children = competency.children.filter(competencyFilter)
+
+        return competency.children.length > 0
+      }
+
+      competencyData.children.forEach(function (area) {
+        area.children = area.children.filter(competencyFilter)
+      })
+      competencyData.children = competencyData.children.filter(area => area.children.length > 0)
+      return competencyData
     }
   },
   mounted () {
@@ -339,6 +374,8 @@ export default {
 
     const comp = this
     loadCompetencies(this.category, this.maxLevel, function (competencyData) {
+      competencyData = comp.filterByArea(competencyData)
+      competencyData = comp.filterByCompetency(competencyData)
       comp.redrawCompetencies(competencyData)
     })
   }

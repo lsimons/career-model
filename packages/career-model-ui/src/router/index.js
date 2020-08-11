@@ -28,12 +28,12 @@ const routes = [
     component: Category
   },
   {
-    path: '/area/:area',
+    path: '/area/:category/:area',
     name: 'Area',
     component: Area
   },
   {
-    path: '/competency/:competency',
+    path: '/competency/:category/:area/:competency',
     name: 'Competency',
     component: Competency
   }

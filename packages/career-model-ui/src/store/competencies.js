@@ -32,6 +32,7 @@ class CompetencyLoader {
       name: area,
       type: 'Area',
       area: area,
+      category: this.category,
       children: []
     }
     this.categoryObj.children.push(areaObject)
@@ -65,6 +66,7 @@ class CompetencyLoader {
         name: competency,
         type: 'Competency',
         area: area,
+        category: this.category,
         children: []
       }
       parent.children.push(competencyObject)
@@ -96,9 +98,7 @@ class CompetencyLoader {
   }
 }
 
-let loader
-
 export function load (category, maxLevel, onComplete, baseUrl = document.location.href) {
-  loader = new CompetencyLoader(category, maxLevel, baseUrl)
+  const loader = new CompetencyLoader(category, maxLevel, baseUrl)
   loader.load(onComplete)
 }

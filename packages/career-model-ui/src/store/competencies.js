@@ -1,6 +1,6 @@
 import { parse as csvParse } from 'papaparse'
 
-class CompetencyLoader {
+class CompetenciesLoader {
   constructor (category, maxLevel, baseUrl) {
     this.category = category
     this.maxLevel = maxLevel
@@ -78,7 +78,7 @@ class CompetencyLoader {
     }
   }
 
-  load (onComplete) {
+  loadCompetencies (onComplete) {
     const loader = this
 
     csvParse(this.dataUrl, {
@@ -98,7 +98,26 @@ class CompetencyLoader {
   }
 }
 
-export function load (category, maxLevel, onComplete, baseUrl = document.location.href) {
-  const loader = new CompetencyLoader(category, maxLevel, baseUrl)
-  loader.load(onComplete)
+export function loadCompetencies (category, maxLevel, onComplete, baseUrl = document.location.href) {
+  const loader = new CompetenciesLoader(category, maxLevel, baseUrl)
+  loader.loadCompetencies(onComplete)
+}
+
+class CompetencyLoader {
+  constructor (category, area, competency, baseUrl) {
+    this.category = category
+    this.area = area
+    this.competency = competency
+    this.baseUrl = baseUrl
+  }
+
+  loadCompetency (onComplete) {
+    console.log('todo: figure out how to spec and load competency details')
+    onComplete({})
+  }
+}
+
+export function loadCompetency(category, area, competency, onComplete, baseUrl = document.location.href) {
+  const loader = new CompetencyLoader(category, area, competency, baseUrl)
+  loader.loadCompetency(onComplete)
 }

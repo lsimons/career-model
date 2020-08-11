@@ -6,7 +6,7 @@
 
 <script>
 import * as d3 from 'd3'
-import { load as loadCompetencies } from '../store/competencies'
+import { loadCompetencies } from '../store/competencies'
 
 const areaColorMap = {
   Requirements: '#fed9a6',
@@ -57,17 +57,29 @@ const areaColors = d3.scaleOrdinal()
   .range(colorScheme)
 
 class CompetencySimulation {
-  constructor (data, width, height) {
+  constructor (data, width, height, zoom, align, valign) {
     this.data = data
     this.width = width
     this.height = height
+    this.zoom = Math.max(0.4, Math.min(4, zoom / 100))
     this.radius = Math.min(
       50,
       Math.max(10,
-        Math.min(this.width / 20, this.height / 20))
+        this.zoom * Math.min(this.width / 20, this.height / 20))
     )
     this.margin = Math.max(5, this.radius / 5)
     this.distance = this.margin * 1.2
+
+    if (align === 'left') {
+      this.centerHorizontal = this.margin + this.radius * 3
+    } else {
+      this.centerHorizontal = this.width / 2
+    }
+    if (valign === 'top') {
+      this.centerVertical = this.margin + this.radius * 3
+    } else {
+      this.centerVertical = this.height / 2
+    }
   }
 
   setup () {
@@ -80,6 +92,8 @@ class CompetencySimulation {
     this.simulation = d3
       .forceSimulation(this.nodes)
       // .stop()
+      // this is not _always_ working nicely...
+      // .force('center', d3.forceCenter(this.centerHorizontal, this.centerVertical))
       .force('center', d3.forceCenter(this.width / 2, this.height / 1.99))
       .force('link',
         d3
@@ -92,7 +106,7 @@ class CompetencySimulation {
             if (source.type === 'Category' || target.type === 'Category') {
               return sim.distance + sim.radius * 3
             } else if (source.type === 'Area' || target.type === 'Area') {
-              return sim.distance + sim.radius
+              return sim.distance + sim.radius * 2
             } else {
               return sim.distance + sim.radius
             }
@@ -243,12 +257,6 @@ class CompetencySimulation {
     }
 
     this.simulation.on('tick', () => {
-      sim.linkSelection
-        .attr('x1', d => d.source.x)
-        .attr('y1', d => d.source.y)
-        .attr('x2', d => d.target.x)
-        .attr('y2', d => d.target.y)
-
       sim.nodeSelection
         .attr('cx', boundedX)
         .attr('cy', boundedY)
@@ -256,6 +264,12 @@ class CompetencySimulation {
       sim.nodeLabelSelection
         .attr('x', returnX)
         .attr('y', returnYOffset)
+
+      sim.linkSelection
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y)
     })
     this.simulation.restart()
   }
@@ -265,8 +279,6 @@ class CompetencySimulation {
       this.simulation.stop()
     }
   }
-
-  redraw
 }
 
 export default {
@@ -277,7 +289,25 @@ export default {
     competency: String,
     width: Number,
     height: Number,
-    maxLevel: Number
+    maxLevel: Number,
+    zoom: {
+      type: Number,
+      default: 100
+    },
+    align: {
+      type: String,
+      default: 'center',
+      validator: function (value) {
+        return ['center', 'left'].indexOf(value) !== -1
+      }
+    },
+    valign: {
+      type: String,
+      default: 'center',
+      validator: function (value) {
+        return ['center', 'top'].indexOf(value) !== -1
+      }
+    }
   },
   data: function () {
     return {
@@ -319,7 +349,7 @@ export default {
     redrawCompetencies: function (competencyData) {
       const vm = this
       function redraw () {
-        vm.sim = new CompetencySimulation(competencyData, vm.drawWidth(), vm.drawHeight())
+        vm.sim = new CompetencySimulation(competencyData, vm.drawWidth(), vm.drawHeight(), vm.zoom, vm.align, vm.valign)
         vm.sim.setup()
         vm.sim.redrawLinks(vm.selections.links)
         vm.sim.redrawNodes(vm.selections.nodes)

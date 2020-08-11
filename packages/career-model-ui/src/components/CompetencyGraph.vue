@@ -8,6 +8,54 @@
 import * as d3 from 'd3'
 import { load as loadCompetencies } from '../store/competencies'
 
+const areaColorMap = {
+  Requirements: '#fed9a6',
+  Design: '#ffffcc',
+  Construction: '#f2f2f2',
+  Test: '#ccebc5',
+  Quality: '#e6f5c9',
+  DevOps: '#f1e2cc',
+  Foundations: '#fff2ae',
+  Domain: '#fbb4ae',
+  'Project Management': '#fddaec',
+  Company: '#cccccc',
+  Leadership: '#b3e2cd',
+  Process: '#fdcdac',
+
+  Technology: '#b3cde3',
+  'Web Frontend': '#d3cde3',
+  'Web Backend': '#d3cde3',
+  Data: '#b3dde3',
+  Cloud: '#b3dde3',
+  Languages: '#b3cdd3',
+  Tools: '#b3cdd3',
+  'Operating Systems': '#b3cdd3',
+  Mobile: '#b3cdf3',
+  Desktop: '#b3cdf3',
+  AI: '#c3dde3',
+  IoT: '#c3dde3',
+  Platform: '#b3ddf3',
+  Integration: '#b3ddf3'
+}
+
+const areas = []
+const colorScheme = []
+for (const [area, color] of Object.entries(areaColorMap)) {
+  areas.push(area)
+  colorScheme.push(color)
+}
+colorScheme.push([
+  '#f4cae4',
+  '#cbd5e8',
+  '#decbe4',
+  '#e5d8bd'])
+
+const categoryColor = '#eef'
+
+const areaColors = d3.scaleOrdinal()
+  .domain(areas)
+  .range(colorScheme)
+
 class CompetencySimulation {
   constructor (data, width, height) {
     this.data = data
@@ -16,10 +64,10 @@ class CompetencySimulation {
     this.radius = Math.min(
       50,
       Math.max(10,
-        Math.min(this.width / 35, this.height / 35))
+        Math.min(this.width / 20, this.height / 20))
     )
     this.margin = Math.max(5, this.radius / 5)
-    this.distance = this.margin * 1.1
+    this.distance = this.margin * 1.2
   }
 
   setup () {
@@ -41,19 +89,19 @@ class CompetencySimulation {
             // noinspection JSUnresolvedVariable
             const source = l.source.data || {}
             const target = l.target.data || {}
-            if (source.type === 'Career' || target.type === 'Career') {
-              return sim.distance + sim.radius * 7
+            if (source.type === 'Category' || target.type === 'Category') {
+              return sim.distance + sim.radius * 3
             } else if (source.type === 'Area' || target.type === 'Area') {
               return sim.distance + sim.radius
             } else {
-              return sim.distance
+              return sim.distance + sim.radius
             }
           })
           .strength(function (l) {
             // noinspection JSUnresolvedVariable
             const source = l.source.data || {}
             const target = l.target.data || {}
-            if (source.type === 'Career' || target.type === 'Career') {
+            if (source.type === 'Category' || target.type === 'Category') {
               return 0.9
             } else if (source.type === 'Area' || target.type === 'Area') {
               return 0.5
@@ -64,18 +112,18 @@ class CompetencySimulation {
       .force('charge', d3.forceManyBody().strength(function (d) {
         // noinspection JSUnresolvedVariable
         const data = d.data || {}
-        if (data.type === 'Career') {
+        if (data.type === 'Category') {
           return -1
         } else if (data.type === 'Area') {
-          return 0.3
+          return -0.3
         } else {
-          return 0.1
+          return -0.2
         }
       }))
       .force('collide', d3.forceCollide().radius(function (d) {
         // noinspection JSUnresolvedVariable
         const data = d.data || {}
-        if (data.type === 'Career') {
+        if (data.type === 'Category') {
           return sim.margin + sim.radius * 3
         } else if (data.type === 'Area') {
           return sim.margin + sim.radius * 2
@@ -100,16 +148,14 @@ class CompetencySimulation {
       .attr('fill', function (d) {
         // noinspection JSUnresolvedVariable
         const data = d.data || {}
-        if (data.type === 'Career') {
-          return '#FBF'
-        } else if (data.type === 'Area') {
-          return '#FFB'
+        if (data.type === 'Category') {
+          return categoryColor
         } else {
-          return '#FFF'
+          return areaColors(data.area)
         }
       })
       .attr('r', function (d) {
-        if (d.data.type === 'Career') {
+        if (d.data.type === 'Category') {
           return sim.radius * 2
         } else if (d.data.type === 'Area') {
           return sim.radius * 1.5
@@ -126,13 +172,12 @@ class CompetencySimulation {
       .join('text')
       .attr('text-anchor', 'middle')
       .style('text-shadow', function (d) {
-        if (d.data.type === 'Career') {
-          return '0 2px 0 #FBF, 2px 0 0 #FBF, 0 -2px 0 #FBF, -2px 0 0 #FBF'
-        } else if (d.data.type === 'Area') {
-          return '0 2px 0 #FFB, 2px 0 0 #FFB, 0 -2px 0 #FFB, -2px 0 0 #FFB'
-        } else {
-          return '0 2px 0 #FFF, 2px 0 0 #FFF, 0 -2px 0 #FFF, -2px 0 0 #FFF'
+        const data = d.data || {}
+        let color = categoryColor
+        if (data.type !== 'Category') {
+          color = areaColors(data.area)
         }
+        return `0 2px 0 ${color}, 2px 0 0 ${color}, 0 -2px 0 ${color}, -2px 0 0 ${color}`
       })
       .text(d => d.data.name)
   }
@@ -146,15 +191,15 @@ class CompetencySimulation {
     function boundedX (d) {
       let radius = sim.radius
       if (d.type && d.type === 'Area') {
-        radius = radius * 2
-      } else if (d.data && d.data.type === 'Career') {
         radius = radius * 3
+      } else if (d.data && d.data.type === 'Category') {
+        radius = radius * 5
       }
 
       // right margin
-      d.x = Math.min(sim.width - radius - sim.margin * 2, d.x)
+      d.x = Math.min(sim.width - radius - sim.margin * 3, d.x)
       // left margin
-      d.x = Math.max(d.x, Math.min(radius + sim.margin * 2))
+      d.x = Math.max(d.x, Math.min(radius + sim.margin * 3))
       return d.x
     }
 
@@ -162,14 +207,14 @@ class CompetencySimulation {
       let radius = sim.radius
       if (d.type && d.type === 'Area') {
         radius = radius * 2
-      } else if (d.data && d.data.type === 'Career') {
+      } else if (d.data && d.data.type === 'Category') {
         radius = radius * 3
       }
 
       // bottom margin
-      d.y = Math.min(sim.height - radius - sim.margin / 2, d.y)
+      d.y = Math.min(sim.height - radius - sim.margin * 3, d.y)
       // top margin
-      d.y = Math.max(d.y, Math.min(radius + sim.margin / 2))
+      d.y = Math.max(d.y, Math.min(radius + sim.margin * 3))
       return d.y
     }
 
@@ -211,6 +256,7 @@ class CompetencySimulation {
 export default {
   name: 'CompetencyGraph',
   props: {
+    category: String,
     width: Number,
     height: Number,
     maxLevel: Number
@@ -276,7 +322,7 @@ export default {
     this.setupSelections()
 
     const comp = this
-    loadCompetencies('Software Engineer', this.maxLevel, function (competencyData) {
+    loadCompetencies(this.category, this.maxLevel, function (competencyData) {
       comp.redrawCompetencies(competencyData)
     })
   }
@@ -284,8 +330,4 @@ export default {
 </script>
 
 <style scoped>
-.competency-graph {
-  border: 1px solid black;
-  box-sizing: border-box;
-}
 </style>

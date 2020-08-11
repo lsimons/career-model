@@ -1,0 +1,40 @@
+# Competency Area,Competency Group,Competency
+Requirements, Elicitation
+Requirements, Elicitation, Design Thinking
+Requirements, Elicitation, Event Storming
+Requirements, Elicitation, Prototyping
+Requirements, Analysis
+Requirements, Specification
+Requirements, Specification, User Experience
+Requirements, Specification, User Experience, Usability
+Requirements, Specification, User Stories
+Requirements, Specification, NFRs
+
+Design, Architecture, Models
+Design, Architecture, Models, UML
+Design, Architecture, Models, ORM
+Design, Architecture, Models, ER
+Design, Architecture, Models, Tools
+# Design, Architecture, Models, Tools, EA
+Design, Architecture, Models, Tools, Visio
+Design, Architecture, Methods
+Design, Architecture, Methods
+Design, Architecture, Methods, C4
+Design, Architecture, Design Patterns
+Design, Architecture, Diagrams
+Design, Visual
+Design, Visual, Graphics
+Design, Visual, Graphics, Color
+Design, Visual, Data
+Design, Visual, UI, Wireframes
+Design, Visual, UI, Axure
+
+Construction, Coding
+Construction, Coding, Secure Coding
+Construction, Debugging
+Construction, Refactoring
+
+Test, Unit Test
+Test, Unit Test, TDD
+Test, Integration Test
+Test, Pentest

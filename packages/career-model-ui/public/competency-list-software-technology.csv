@@ -1,0 +1,64 @@
+# Competency Area,Competency Group,Competency
+Web Frontend
+Web Frontend, Frameworks
+Web Frontend, Frameworks, Angular
+Web Frontend, Frameworks, React
+Web Frontend, Frameworks, Vue
+Web Backend
+Web Backend, Frameworks
+Web Backend, Frameworks, Spring
+Web Backend, Frameworks, ASP.Net
+Data
+Data, Databases
+Data, Databases, PostgreSQL
+Data, Databases, Oracle
+Data, Databases, SQL Server
+Data, Databases, Hadoop
+Data, Pipelines
+Data, Pipelines, Spark
+Data, Visualization
+Cloud
+Cloud, AWS
+Cloud, Azure
+Cloud, GCP
+Languages
+Languages, Java
+Languages, C#
+# Languages, C/C++
+Languages, JavaScript
+# Languages, JavaScript, TypeScript
+Languages, Python
+Languages, Go
+Languages, PHP
+# Languages, R
+# Languages, Rust
+
+Tools
+Tools, IDEs
+Tools, IDEs, IDEA
+Tools, IDEs, Visual Studio
+Tools, IDEs, XCode
+Tools, Config Management, Chef
+Tools, Config Management, Ansible
+Tools, Config Management, Terraform
+
+# Not as relevant for us:
+# Competency Area,Competency Group,Competency
+Mobile
+# Mobile, iOS
+# Mobile, Android
+# Mobile, Web
+Operating Systems
+# Operating Systems, Windows
+# Operating Systems, Mac
+# Operating Systems, Linux
+AI
+IoT
+Platform
+Platform, Containers
+Platform, Containers, Docker
+Platform, Containers, Kubernetes
+Platform, VMWare
+Platform, Low-Code
+Platform, Low-Code, Mendix
+Integration

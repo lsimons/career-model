@@ -1,0 +1,43 @@
+# Competency Area,Competency Group,Competency
+Quality, Pairing
+Quality, Review
+Quality, Review, Design Review
+Quality, Review, Code Review
+Quality, Review, Security Review
+Quality, Review, Coding Standards
+Quality, Review, Coding Standards, Tools
+Quality, Review, Inspection
+Quality, Review, Inspection, Formal Inspection
+Quality, Review, Inspection, Audit
+Quality, Review, Inspection, Audit, ISO 25010
+Quality, Review, Inspection, Audit, ISO 90003
+Quality, Measurement
+Quality, Measurement, Tools, SonarQube
+# Quality, Measurement, Tools, Coverity
+# Quality, Measurement, Tools, Black Duck
+# Quality, Measurement, Tools, TIOBE
+
+DevOps
+DevOps, Automation
+DevOps, Automation, Config Management
+DevOps, Automation, Config Management
+DevOps, Service Management
+DevOps, Service Management, ITIL
+DevOps, Continuous Delivery
+
+Project Management
+Project Management, Estimation
+Project Management, Planning
+Project Management, Planning, Risk Management
+Project Management, Planning, Technical Debt
+
+Process
+Process, Agile
+Process, Agile, XP
+Process, Agile, Scrum
+Process, Agile, Scrum, SAFe
+Process, Agile, Scrum, Kanban
+Process, Facilitation
+
+# Process, Waterfall
+# Process, Waterfall, RUP

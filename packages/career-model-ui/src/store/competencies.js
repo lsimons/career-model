@@ -1,28 +1,28 @@
 import { parse as csvParse } from 'papaparse'
 
 class CompetencyLoader {
-  constructor (career, maxLevel, baseUrl) {
-    this.career = career
+  constructor (category, maxLevel, baseUrl) {
+    this.category = category
     this.maxLevel = maxLevel
     this.baseUrl = baseUrl
-    this.careerObj = {
-      name: career,
-      type: 'Career',
+    this.categoryObj = {
+      name: category,
+      type: 'Category',
       children: []
     }
   }
 
-  get careerSlug () {
-    return this.career.toLowerCase().replace(' ', '-')
+  get categorySlug () {
+    return this.category.toLowerCase().replace(/ /g, '-')
   }
 
   get dataUrl () {
-    return new URL(`/competency-list-${this.careerSlug}.csv`, this.baseUrl).toString()
+    return new URL(`/competency-list-${this.categorySlug}.csv`, this.baseUrl).toString()
   }
 
   ensureArea (name) {
     const area = name.trim()
-    const areas = this.careerObj.children
+    const areas = this.categoryObj.children
     for (let i = 0; i < areas.length; i++) {
       if (areas[i].name === area) {
         return areas[i]
@@ -31,9 +31,10 @@ class CompetencyLoader {
     const areaObject = {
       name: area,
       type: 'Area',
+      area: area,
       children: []
     }
-    this.careerObj.children.push(areaObject)
+    this.categoryObj.children.push(areaObject)
     return areaObject
   }
 
@@ -63,6 +64,7 @@ class CompetencyLoader {
       competencyObject = {
         name: competency,
         type: 'Competency',
+        area: area,
         children: []
       }
       parent.children.push(competencyObject)
@@ -88,7 +90,7 @@ class CompetencyLoader {
         loader.ensureCompetency(areaName, competencyNames, 1)
       },
       complete: function () {
-        onComplete(loader.careerObj)
+        onComplete(loader.categoryObj)
       }
     })
   }
@@ -96,7 +98,7 @@ class CompetencyLoader {
 
 let loader
 
-export function load (career, maxLevel, onComplete, baseUrl = document.location.href) {
-  loader = new CompetencyLoader(career, maxLevel, baseUrl)
+export function load (category, maxLevel, onComplete, baseUrl = document.location.href) {
+  loader = new CompetencyLoader(category, maxLevel, baseUrl)
   loader.load(onComplete)
 }

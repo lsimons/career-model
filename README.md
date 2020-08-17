@@ -1,6 +1,7 @@
 # Career Model Monorepo
 See
 > https://career.model.tools/
+
 for the live website powered by this repository.
 
 Career Model is an interactive career path planner.
@@ -27,6 +28,7 @@ If you don't want to release to the main website, use a branch other than master
 ## Planning instructions
 There's a kanban board for this project that has some ideas...
 > https://github.com/lsimons/career-model/projects/1
+
 ...but mostly, we're not doing structured planning yet.
 
 ## Commit message conventions

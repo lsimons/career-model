@@ -1,7 +1,13 @@
-Career Model Monorepo
+# Career Model Monorepo
+See
+> https://career.model.tools/
+for the live website powered by this repository.
 
-https://career.model.tools/
+Career Model is an interactive career path planner.
 
+This is an early-stage work-in-progress hobby project.
+
+## Development instructions
 Use [PowerShell Core 6+](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-6):
 ```powershell
     pwsh script\bootstrap.ps1
@@ -9,8 +15,21 @@ Use [PowerShell Core 6+](https://docs.microsoft.com/en-us/powershell/scripting/i
     pwsh script\server.ps1
     pwsh script\test.ps1
 ```
-(also on linux or mac)
+(yes, also on linux or mac)
 
+## Deployment instructions
+There's Azure Static Websites automation with a github action that takes any change to the master branch and then builds and deploys it to the main website.
+
+I.e. you don't need to do anything special to deploy.
+
+If you don't want to release to the main website, use a branch other than master :-)
+
+## Planning instructions
+There's a kanban board for this project that has some ideas...
+> https://github.com/lsimons/career-model/projects/1
+...but mostly, we're not doing structured planning yet.
+
+## Commit message conventions
 Follow
 > https://conventionalcommits.org/
 
@@ -29,4 +48,6 @@ with types:
 * chore: Changes that take care of some other kind of chore that doesn't impact the main code
 (based on angular conventions https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)
 
-See docs/.
+## License
+This software is licended under Apache License v2.0. See [LICENSE](LICENSE.txt). But, it is not yet distributed publically, and so until it _is_ distributed that does not help you.
+

@@ -35,7 +35,8 @@ const areaColorMap = {
   AI: '#c3dde3',
   IoT: '#c3dde3',
   Platform: '#b3ddf3',
-  Integration: '#b3ddf3'
+  Integration: '#b3ddf3',
+  Maintenance: '#e5d8bd'
 }
 
 const areas = []

@@ -38,9 +38,15 @@ Tools, IDEs
 Tools, IDEs, IDEA
 Tools, IDEs, Visual Studio
 Tools, IDEs, XCode
+Tools, Editors
+Tools, Editors, VIM
+Tools, Editors, Emacs
+Tools, Editors, VS Code
 Tools, Config Management, Chef
 Tools, Config Management, Ansible
 Tools, Config Management, Terraform
+Tools, Version Control
+Tools, Version Control, Git
 
 # Not as relevant for us:
 # Competency Area,Competency Group,Competency

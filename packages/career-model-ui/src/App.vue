@@ -8,7 +8,9 @@
       </v-tabs>
     </v-app-bar>
     <v-main>
-      <router-view/>
+      <keep-alive include="Home,About,Category">
+        <router-view :key="$route.fullPath"/>
+      </keep-alive>
     </v-main>
   </v-app>
 </template>

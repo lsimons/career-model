@@ -1,4 +1,5 @@
-import { parse as csvParse } from 'papaparse'
+import {parse as csvParse} from 'papaparse'
+import YAML from "yaml/index";
 
 class CompetenciesLoader {
   constructor (category, maxLevel, baseUrl) {
@@ -13,7 +14,7 @@ class CompetenciesLoader {
   }
 
   get categorySlug () {
-    return this.category.toLowerCase().replace(/ /g, '-')
+    return slug(this.category)
   }
 
   get dataUrl () {
@@ -103,21 +104,147 @@ export function loadCompetencies (category, maxLevel, onComplete, baseUrl = docu
   loader.loadCompetencies(onComplete)
 }
 
-class CompetencyLoader {
-  constructor (category, area, competency, baseUrl) {
-    this.category = category
-    this.area = area
-    this.competency = competency
-    this.baseUrl = baseUrl
-  }
+export function parseBehaviors (s) {
+  /*
+    from
+         `   abc def g
+          def ghi  `
+    to
+        ['abc def g', 'def ghi']
+  */
+  return s.trim().replace(/\r\n/g, '\n').split('\n').flatMap(x => x.trim())
+}
 
-  loadCompetency (onComplete) {
-    console.log('todo: figure out how to spec and load competency details')
-    onComplete({})
+export function parseLinks (s) {
+  /*
+   from
+        `x > y > z
+        a > b`
+   to
+        [{ category: x, area: y, competency: z }
+         { category: x, area: y }]
+  */
+  return s
+    .trim()
+    .replace(/\r\n/g, '\n')
+    .split('\n')
+    .map(parseLink)
+}
+
+export function parseLink (s) {
+  /*
+   from
+        `x > y > z`
+   to
+        { category: x, area: y, competency: z }
+  */
+  return parseLinkArr(s.split(/ *> */).map(elem => elem.trim()))
+}
+
+export function parseLinkArr (arr) {
+  switch (arr.length) {
+    case 0:
+      console.error(`invalid link line '${JSON.stringify(arr)}'`)
+      return {}
+    case 1:
+      return { category: arr[0] }
+    case 2:
+      return { category: arr[0], area: arr[1] }
+    case 3:
+      return { category: arr[0], area: arr[1], competency: arr[2] }
+    default:
+      console.error(`invalid link line '${JSON.stringify(arr)}'`)
+      return { category: arr[0], area: arr[1], competency: arr[2] }
   }
 }
 
-export function loadCompetency(category, area, competency, onComplete, baseUrl = document.location.href) {
-  const loader = new CompetencyLoader(category, area, competency, baseUrl)
-  loader.loadCompetency(onComplete)
+export function slug (s) {
+  if (!s) {
+    return s
+  }
+  return s.toLowerCase().replace(/ /g, '-')
+}
+
+export function parseLinkSections (competencyDetailYaml) {
+  /*
+   from
+        links:
+          foo:
+            x > y > z
+            x > y
+   to
+        {links:
+          {foo:
+            [{ category: x, area: y, competency: z }
+             { category: x, area: y }]
+          }
+        }
+  */
+  for (const [linkSectionName, linkSection] of Object.entries(competencyDetailYaml.links)) {
+    competencyDetailYaml.links[linkSectionName] = linkSection.map(link => parseLink(link))
+  }
+}
+
+const textSectionNames = ['evaluation', 'learningPath']
+
+export function parseTextSections (competencyDetailYaml) {
+  /*
+   from
+     {evaluations: "<p>foo [x > y > z]"}
+   to
+     {evaluations: "<p>foo <a href="#/competency/x/y/z">z</a>}
+   */
+  for (let i = 0; i < textSectionNames.length; i++) {
+    const textSectionName = textSectionNames[i]
+    let textSection = competencyDetailYaml[textSectionName]
+    textSection = textSection.replace(/\[([^<\]]+)]/g, function (match, p1) {
+      const link = parseLink(p1)
+      const path = competencyLinkPath(link.category, link.area, link.competency)
+      return `<a href="#${path}">${link.competency}</a>`
+    })
+    competencyDetailYaml[textSectionName] = textSection
+  }
+}
+
+export function competencyLinkPath (category, area, competency) {
+  if (area) {
+    if (competency) {
+      return '/competency/' + category + '/' + area + '/' + competency
+    } else {
+      return '/area/' + category + '/' + area
+    }
+  } else {
+    if (competency) {
+      console.error(`Defined competency-link with competency '${competency}' but no parent area!`)
+    }
+    return '/category/' + category
+  }
+}
+
+export function fetchCompetencyDetail (category, area, competency, handler, errorHandler) {
+  const url = `/competencies/${slug(category)}/${slug(area)}/${slug(competency)}.yaml`
+  fetch(url).then(response => {
+    if (!response.ok) {
+      const error = `Error ${response.status} while loading ${competency}!`
+      errorHandler(error)
+      return
+    }
+
+    response.text().then(body => {
+      if (!body.startsWith('definition:')) {
+        const error = `Unexpected data while loading ${competency}!`
+        errorHandler(error)
+        return
+      }
+
+      const competencyDetailObj = YAML.parse(body)
+      parseLinkSections(competencyDetailObj)
+      parseTextSections(competencyDetailObj)
+      handler(competencyDetailObj)
+    }).catch(error => {
+      errorHandler(error)
+    })
+  }).catch(error => {
+    errorHandler(error)
+  })
 }

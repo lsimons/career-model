@@ -10,24 +10,25 @@ Requirements, Specification, User Experience, Usability
 Requirements, Specification, User Stories
 Requirements, Specification, NFRs
 
-Design, Architecture, Models
-Design, Architecture, Models, UML
-Design, Architecture, Models, ORM
-Design, Architecture, Models, ER
-Design, Architecture, Models, Tools
-# Design, Architecture, Models, Tools, EA
-Design, Architecture, Models, Tools, Visio
-Design, Architecture, Methods
-Design, Architecture, Methods
-Design, Architecture, Methods, C4
-Design, Architecture, Design Patterns
-Design, Architecture, Diagrams
-Design, Visual
-Design, Visual, Graphics
-Design, Visual, Graphics, Color
-Design, Visual, Data
-Design, Visual, UI, Wireframes
-Design, Visual, UI, Axure
+Architecture, Models
+Architecture, Models, UML
+Architecture, Models, ORM
+Architecture, Models, ER
+Architecture, Models, Tools
+# Architecture, Models, Tools, EA
+Architecture, Models, Tools, Visio
+Architecture, Methods
+Architecture, Methods
+Architecture, Methods, C4
+Architecture, Design Patterns
+Architecture, Diagrams
+
+Interaction Design
+Interaction Design, Graphics
+Interaction Design, Graphics, Color
+Interaction Design, Data
+Interaction Design, UI, Wireframes
+Interaction Design, UI, Axure
 
 Construction, Coding
 Construction, Coding, Secure Coding
@@ -38,3 +39,11 @@ Test, Unit Test
 Test, Unit Test, TDD
 Test, Integration Test
 Test, Pentest
+
+Maintenance, Evolution
+Maintenance, Release Management
+Maintenance, Migration
+Maintenance, Operation
+Maintenance, Operation, Troubleshooting
+Maintenance, Operation, Monitoring & Alerting
+Maintenance, Operation, Incident Response

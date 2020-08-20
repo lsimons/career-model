@@ -1,0 +1,83 @@
+definition: Debugging is finding and resolving bugs in software.
+books:
+  - title: Code Complete
+    isbn:  978-0735619678
+    href:  https://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670
+  - title: Debugging
+    isbn:  978-0814434451
+    href:  https://www.amazon.de/Debugging-Indispensable-Software-Hardware-Problems/dp/0814434452/
+  - isbn:  978-0123745156
+    href:  https://www.amazon.com/Why-Programs-Fail-Systematic-Debugging/dp/0123745152/
+    title: Why Programs Fail
+courses: []
+behaviors:
+  base:
+    - create high quality bug reports
+    - use basic structured methods for finding and isolating bugs
+    - adopt programs to make them easy to debug
+    - use appropriate debugging tools for a language
+  expert:
+    - practice hypothesis-based debugging
+    - debug requirements
+    - debug designs
+    - use time traveling debuggers
+    - use statistical and heuristic debugging techniques
+    - use distributed debugging and tracing techniques
+    - build specialist debugging tools
+    - optimize software for debuggability
+  lead:
+    - use other practices to avoid debugging
+    - create new debugging tools and techniques
+    - ?
+links:
+  prerequisites:
+    - Software Production > Construction > Coding
+    - Software Technology > Languages
+  related:
+    - General > Foundations > Scientific Method
+  specializations: []
+learningPath: |-
+    <p>
+      All non-trivial software has bugs and all software production introduces bugs. This makes debugging as
+      fundamental a [Software Production > Construction] activity as [Software Production > Construction > Coding],
+      and like coding, most debugging is best learned on-the-job solving specific and concrete problems.
+    </p>
+    <p>
+      While the act of coding is fundamental to software production, the act of debugging is theoretically unneeded
+      if you can write flawless programs. This makes the choice to invest in debugging competency a modest one where
+      you must first realize you cannot write flawless programs.
+    </p>
+    <p>
+      There are many debugging tools and techniques to master, with the vast majority of them highly related to
+      specific development environments, and problem domains. The listed books are rare in that they are not
+      technology-specific. For specific [Software Technology], there are often specific resources.
+    <p>
+      Expert coders, particularly those that also master [Software Production > Test] and
+      [Software Production > Construction > Refactoring] techniques, learn to avoid the need to apply complex
+      debugging techniques and tools to the software they create, keeping debugging simple and manageable. This
+      makes debugging leadership hard to define.
+    </p>
+evaluation: |-
+    <p>
+      The basic measure for debugging competency could be the time taken to progress from problem report to
+      solution completion...if it weren't the case that how debuggable a program is in the first place is quite
+      dependent on the quality of its construction. When you are quite experienced at software construction in
+      a particular domain using a particular development environment to work on your own software, your time
+      spent debugging is limited, but the work is easy and the depth of your competency is hard to evaluate.
+      When you are in a new domain with new tools working on low quality software created by someone else,
+      time spent on debugging can be the dominant part of a project.
+    </p>
+    <p>
+      For certain problems that are quite important as well as large enough and complex enough, the time taken
+      to debug an issue matters less than whether it is possible to debug the issue at all. Success in these
+      situations can depend less on skill or knowledge and more on endurance to stay with the problem.
+    </p>
+    <p>
+      This means a useful strategy is to stay aware of available debugging tools and practices and to stay aware
+      of their evolution, but to not invest much in growing debugging competency beyond your actual needs. It is
+      generally more valuable to invest in mastery of techniques that prevent the need to master debugging, such
+      as those that improve design, testing, and software quality.
+    </p>
+    <p>
+      I have no insight into how to evaluate a leadership level of debugging competency.
+    </p>

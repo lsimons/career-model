@@ -1,21 +1,21 @@
 definition: Coding is creating software by writing source code.
 books:
-  - isbn:  978-0735619678
+  - title: Code Complete
+    isbn:  978-0735619678
     href:  https://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670
-    title: Code Complete
-  - isbn:  978-0132350884
+  - title: Clean Code
+    isbn:  978-0132350884
     href:  https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-dp-0132350882/dp/0132350882/
-    title: Clean Code
-  - isbn:  978-0596510046
+  - title: Beautiful Code
+    isbn:  978-0596510046
     href:  https://www.amazon.com/Beautiful-Code-Leading-Programmers-Practice/dp/0596510047
-    title: Beautiful Code
 courses:
-  - href:     https://construx.vueocity.com/portal/code-complete-essentials
-    title:    Code Complete Essentials
+  - title:    Code Complete Essentials
+    href:     https://construx.vueocity.com/portal/code-complete-essentials
     free:     false
     duration: 7h40m
-  - href:     https://www.youtube.com/playlist?list=PLr5kTqIf6cOHXY18-bOxMWRTAiUVd1NQN
-    title:    Clean Code Playlist
+  - title:    Clean Code Playlist
+    href:     https://www.youtube.com/playlist?list=PLr5kTqIf6cOHXY18-bOxMWRTAiUVd1NQN
     free:     true
     duration: 9h11m
 behaviors:

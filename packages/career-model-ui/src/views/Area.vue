@@ -8,7 +8,7 @@
       </v-col>
     </v-row>
     <v-row class="flex-grow-1">
-      <v-col cols="12" sm="6" md="4" style="min-height: 300px; max-height: 1000px">
+      <v-col cols="12" sm="6" md="4" style="min-height: 300px; max-height: 600px">
         <CompetencyGraph v-bind:width="300"
                          v-bind:height="300"
                          v-bind:max-level="99"

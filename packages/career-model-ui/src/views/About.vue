@@ -7,7 +7,7 @@
     </v-row>
     <v-row dense>
       <v-col cols="12">
-        <p>Career Model is an interactive career path planner.</p>
+        <p>Career Model is a career path planner.</p>
       </v-col>
     </v-row>
     <v-spacer></v-spacer>

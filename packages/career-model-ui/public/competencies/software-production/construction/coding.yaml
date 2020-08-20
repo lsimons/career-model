@@ -1,0 +1,109 @@
+definition: Coding is creating software by writing source code.
+books:
+  - isbn:  978-0735619678
+    href:  https://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670
+    title: Code Complete
+  - isbn:  978-0132350884
+    href:  https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-dp-0132350882/dp/0132350882/
+    title: Clean Code
+  - isbn:  978-0596510046
+    href:  https://www.amazon.com/Beautiful-Code-Leading-Programmers-Practice/dp/0596510047
+    title: Beautiful Code
+courses:
+  - href:     https://construx.vueocity.com/portal/code-complete-essentials
+    title:    Code Complete Essentials
+    free:     false
+    duration: 7h40m
+  - href:     https://www.youtube.com/playlist?list=PLr5kTqIf6cOHXY18-bOxMWRTAiUVd1NQN
+    title:    Clean Code Playlist
+    free:     true
+    duration: 9h11m
+behaviors:
+  base:
+    - produce detailed design for high-level design and architecture
+    - write programs from scratch satisfying requirements and detailed design
+    - use a programming language following its best practices
+    - use appropriate editors and IDEs for coding
+    - define and apply coding standards
+    - write code that is simple, understandable and maintainable
+  expert:
+    - write code that is considered beautiful by peers
+    - write high quality code on schedule that implements only its requirements
+    - master best practice tools and IDEs for maximum productivity
+    - guide peers to write better source code
+    - teach coding practices to others
+    - write code that is ready for change
+    - write code that is easy to verify for correctness
+  lead:
+    - give industry training on coding best practices
+    - produce articles, books or other media on coding best practices
+    - improve company-wide coding standards and practices
+    - help multiple teams improve coding practices
+    - innovate on industry coding practices and share outcomes
+links:
+  prerequisites:
+    - General > Foundations > Reading
+    - General > Foundations > Writing
+    - General > Foundations > Teamwork
+    - General > Foundations > Deliberate Practice
+  related:
+    - Software Technology > Languages
+    - Software Technology > IDEs
+    - Software Technology > Editors
+    - Software Technology > Version Control
+    - Software Production > Construction > Debugging
+    - Software Production > Construction > Refactoring
+    - Software Production > Test > Unit Test
+    - Software Management > Quality > Pairing
+    - Software Management > Review > Code Review
+  specializations:
+    - Software Production > Construction > Secure Coding
+
+learningPath: |-
+    <p>
+      Coding is a deep skill improved almost entirely through experience and deliberate practice. Only the most
+      basic competency can be established with some training and practice in classroom or workshop settings such
+      as in an academic environment or at a code school. Once you have a basic proficiency you can self-improve
+      through specific exercises such as <a href="http://codekata.com/">Code kata</a>. Over the course of your
+      career 95% or more of your learning to code will be on the job.
+    </p>
+    <p>
+      A particularly useful deliberate practice for improving coding skill is
+      [Software Management > Quality > Pairing] with other coders
+      and taking some extra time during or around pairing sessions to exchange tips and advice. Most great coders
+      report to have learned a lot of great practices by pairing, both in settings where they were junior to their
+      partner and where they were more senior. It is worthwhile to pair with a wide range of other coders, also
+      outside of your regular environment.
+    </p>
+    <p>
+      To progress beyond a basic level of competency requires to also achieve basic competency in the related
+      areas listed above. In particular you need to be good enough at using your development environment
+      (programming language, version control system, editor or IDE) that they do not get in the way of your coding
+      progress.
+    </p>
+
+evaluation: |-
+    <p>
+      When paired with a lot of other competencies in the right context, a high competency in coding will allow
+      you to consistently produce high quality code with a low level of technical debt. This means you can
+      somewhat measure your level of expertise by the quality of the software produce. Because coding is
+      mostly a team activity, it is difficult to isolate individual competency vs team competency. You can get
+      some sense of your ability vs that of your team by working in different teams.
+    </p>
+    <p>
+      Programming exercises or puzzles can be used to assess a quite basic competency only, though they tend to
+      overvalue knowledge of programming languages and knowledge of algorithms over actual coding ability. Coding
+      competitions measure some amount of coding competency, though due to their setup they overvalue speed of
+      coding over more important attributes like understandability and maintainability of code.
+    </p>
+    <p>
+      Beyond the most basic competency, most evaluation of your skill should be done through feedback from peers.
+      The most important feedback is the spontaneous feedback on-the-job when expert coders are impressed by your
+      coding. If you can no longer find peers that can help you self-evaluate, if you are or become a trainer
+      or public speaker, giving trainings and presentations that include live coding can be a way to get some
+      feedback from a wide range of other coders.
+    </p>
+    <p>
+      Leadership in coding is much like zen mastery: beyond a certain level, the key to further self improvement
+      is to teach others.
+    </p>

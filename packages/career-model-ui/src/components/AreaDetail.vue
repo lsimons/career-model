@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     redrawCompetencies (areaData) {
-      console.log('areaData', areaData)
       this.competencies = this.flattenCompetencies(areaData, [])
     },
     flattenCompetencies: function (parent, accumulator) {
@@ -59,7 +58,7 @@ export default {
       }
       return accumulator
     },
-    selectArea: function (competencyData) { // todo shared with CompetencyDetail
+    selectArea: function (competencyData) {
       if (!this.area || this.area === '') {
         return competencyData
       }

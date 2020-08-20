@@ -2,6 +2,7 @@
   <v-container class="home d-flex flex-column" fluid style="min-height: 100%">
     <v-row class="flex-grow-1" dense>
       <v-col cols="6">
+        try 'Coding' to see a fleshed-out competency
         <CompetencyGraph v-bind:width="200" v-bind:height="200" v-bind:max-level="3" category="Software Production" />
       </v-col>
       <v-col cols="6">

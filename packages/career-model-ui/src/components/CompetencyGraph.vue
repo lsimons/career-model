@@ -10,7 +10,8 @@ import { loadCompetencies } from '../store/competencies'
 
 const areaColorMap = {
   Requirements: '#fed9a6',
-  Design: '#ffffcc',
+  Architecture: '#ffffcc',
+  'Interaction Design': '#f4cae4',
   Construction: '#f2f2f2',
   Test: '#ccebc5',
   Quality: '#e6f5c9',

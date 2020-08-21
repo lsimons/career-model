@@ -1,22 +1,29 @@
 <template>
   <div id="area-detail" style="width: 100%; height: 100%">
+    <v-row class="flex-grow-0" dense>
+      <v-col cols="12" class="area-definition">
+          {{ definition }}
+      </v-col>
+    </v-row>
     <div v-for="competency in competencies" :key="competency.name">
       <v-container>
-        <v-row class="flex-grow-1" dense>
-          <h1 class="text-h4">{{ competency.longName }}</h1>
+        <v-row class="flex-grow-0" dense>
+          <v-col cols="12">
+            <h1 class="text-h4">{{ competency.longName }}</h1>
+          </v-col>
         </v-row>
       </v-container>
-      <CompetencyDetail
-                        v-bind:category="category"
+      <CompetencyDetail v-bind:category="category"
                         v-bind:area="area"
                         v-bind:competency="competency.name"/>
       <v-container>
-        <v-row class="flex-grow-1" dense>
-          <div class="competency-more">
+        <v-row class="flex-grow-0" dense>
+          <v-col cols="12" class="competency-more">
             <competency-link v-bind:category="category"
                              v-bind:area="area"
                              v-bind:competency="competency.name"
-                             v-bind:label="'More about ' + competency.longName"/></div>
+                             v-bind:label="'More about ' + competency.longName"/>
+          </v-col>
         </v-row>
       </v-container>
     </div>
@@ -24,6 +31,7 @@
 </template>
 
 <script>
+import { fetchCategoryDetail } from '../store/categories'
 import { loadCompetencies } from '../store/competencies'
 import CompetencyDetail from './CompetencyDetail'
 import CompetencyLink from './CompetencyLink'
@@ -37,6 +45,7 @@ export default {
   data: function () {
     return {
       competencies: [],
+      definition: ''
     }
   },
   methods: {
@@ -79,6 +88,16 @@ export default {
       const areaData = comp.selectArea(competencyData)
       comp.redrawCompetencies(areaData)
     })
+
+    fetchCategoryDetail(this.category, function (categoryData) {
+      const areas = categoryData.areas
+      for (const [name, area] of Object.entries(areas)) {
+        if (name === comp.area) {
+          comp.definition = area.definition
+          break
+        }
+      }
+    }, error => console.error(error))
   },
   components: {
     CompetencyLink,
@@ -88,6 +107,10 @@ export default {
 </script>
 
 <style scoped>
+.area-definition {
+  font-weight: bold;
+}
+
 .competency-more {
   text-align: right;
 }

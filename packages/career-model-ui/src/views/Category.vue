@@ -3,15 +3,18 @@
     <v-row class="flex-grow-0">
       <v-col cols="12">
         <router-link to="/">Home</router-link>
-        <h4 class="title">Category: {{ $route.params.category }} </h4>
+        <h4 class="title">Category: {{ $route.params.category }}</h4>
       </v-col>
     </v-row>
     <v-row class="flex-grow-1">
-      <v-col cols="12">
-        <CompetencyGraph v-bind:width="400"
-                         v-bind:height="400"
-                         v-bind:max-level="99"
-                         v-bind:category="$route.params.category" />
+      <v-col cols="12" md="8" style="min-height: 400px;">
+        <CompetencyGraph :width="400"
+                         :height="400"
+                         :max-level="99"
+                         :category="$route.params.category" />
+      </v-col>
+      <v-col cols="12" md="4">
+        <CategoryDetail :category="$route.params.category"/>
       </v-col>
     </v-row>
   </v-container>
@@ -19,11 +22,13 @@
 
 <script>
 import CompetencyGraph from '../components/CompetencyGraph'
+import CategoryDetail from '../components/CategoryDetail'
 
 export default {
   name: 'Category',
   components: {
-    CompetencyGraph
+    CompetencyGraph,
+    CategoryDetail
   }
 }
 </script>

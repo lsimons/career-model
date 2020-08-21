@@ -2,9 +2,9 @@
   <div id="competency-detail" style="width: 100%; height: 100%">
     <v-container>
       <v-row class="flex-grow-1" dense>
-        <div class="competency-definition">
+        <v-col class="competency-definition">
           <p>{{ definition }}</p>
-        </div>
+        </v-col>
       </v-row>
       <v-row v-if="expand" class="flex-grow-1" dense>
         <v-col v-if="books.length > 0" cols="12" md="6" xl="4">

@@ -1,5 +1,6 @@
 import {parse as csvParse} from 'papaparse'
-import YAML from "yaml/index";
+import YAML from 'yaml/index'
+import {slug} from "./util";
 
 class CompetenciesLoader {
   constructor (category, maxLevel, baseUrl) {
@@ -156,13 +157,6 @@ export function parseLinkArr (arr) {
       console.error(`invalid link line '${JSON.stringify(arr)}'`)
       return { category: arr[0], area: arr[1], competency: arr[2] }
   }
-}
-
-export function slug (s) {
-  if (!s) {
-    return s
-  }
-  return s.toLowerCase().replace(/ /g, '-')
 }
 
 export function parseLinkSections (competencyDetailYaml) {

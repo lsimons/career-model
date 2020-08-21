@@ -1,0 +1,14 @@
+definition: Software production is all the work involved in the primary process while creating software.
+areas:
+  Requirements:
+    definition: Describing the needs for software.
+  Interaction Design:
+    definition: Outlining how software will be interacted with by its users.
+  Architecture:
+    definition: Creating shared understanding of the essential decisions for how to build software.
+  Construction:
+    definition: Writing software that satisfies requirements, designs, and architecture.
+  Test:
+    definition: Checking whether software satisfies requirements, designs, and architecture.
+  Maintenance:
+    definition: Modifying software after initial delivery.

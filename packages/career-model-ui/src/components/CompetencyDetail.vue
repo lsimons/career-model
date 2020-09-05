@@ -11,7 +11,7 @@
           <div class="competency-books">
             <h2 class="text-h6">Books</h2>
             <ul>
-              <li v-for="book in books" :key="book.isbn"><a :data-isbn-13="book.isbn" :href="book.href">{{ book.title }}</a></li>
+              <li v-for="book in books" :key="JSON.stringify(book.isbn)"><a :data-isbn-13="book.isbn" :href="book.href">{{ book.title }}</a></li>
             </ul>
           </div>
         </v-col>
@@ -19,7 +19,7 @@
           <div class="competency-courses">
             <h2 class="text-h6">Courses</h2>
             <ul>
-              <li v-for="course in courses" :key="course.url">
+              <li v-for="course in courses" :key="JSON.stringify(course.url)">
                 <a :href="course.href">{{ course.title}}</a>
                 (<span v-if="course.free">free</span><span v-else>paid</span><span v-if="course.duration">, {{ course.duration }}</span>)
               </li>
@@ -32,7 +32,7 @@
           <div class="competency-behavior-base">
             <h2 class="text-h6">Base behavior</h2>
             <ul>
-              <li v-for="behavior in behaviors.base" :key="behavior">{{ behavior }}</li>
+              <li v-for="behavior in behaviors.base" :key="JSON.stringify(behavior)">{{ behavior }}</li>
             </ul>
           </div>
         </v-col>
@@ -40,7 +40,7 @@
           <div class="competency-behavior-expert">
             <h2 class="text-h6">Expert behavior</h2>
             <ul>
-              <li v-for="behavior in behaviors.expert" :key="behavior">{{ behavior }}</li>
+              <li v-for="behavior in behaviors.expert" :key="JSON.stringify(behavior)">{{ behavior }}</li>
             </ul>
           </div>
         </v-col>
@@ -48,7 +48,7 @@
           <div class="competency-behavior-lead">
             <h2 class="text-h6">Leadership behavior</h2>
             <ul>
-              <li v-for="behavior in behaviors.lead" :key="behavior">{{ behavior }}</li>
+              <li v-for="behavior in behaviors.lead" :key="JSON.stringify(behavior)">{{ behavior }}</li>
             </ul>
           </div>
         </v-col>

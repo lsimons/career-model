@@ -1,1 +1,14 @@
-definition: todo
+definition: The Unified Modeling Language (UML) provides a standard way to visualize the design of a software system.
+d: https://www.amazon.com/UML-2-0-Nutshell-Desktop-Reference/dp/0596007957
+books:
+  - title: "UML 2.0 in a Nutshell: A Desktop Quick Reference"
+    isbn:  978-0596007959
+    href:  https://www.amazon.com/UML-2-0-Nutshell-Desktop-Reference/dp/0596007957
+  - title: "UML Distilled: A Brief Guide to the Standard Object Modeling Language"
+    isbn:  978-0321193681
+    href:  https://www.amazon.com/UML-Distilled-Standard-Modeling-Language/dp/0321193687
+courses:
+  - title: UML 2.0 Tutorial
+    href: https://www.youtube.com/playlist?list=PLGLfVvz_LVvQ5G-LdJ8RLqe-ndo7QITYc
+    free: true
+    duration: 1h54m

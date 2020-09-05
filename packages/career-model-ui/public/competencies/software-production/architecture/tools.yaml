@@ -1,1 +1,17 @@
-definition: todo
+definition: Architecture tools are used for creating architecture models and diagrams.
+references:
+  - title:       Diagrams.net
+    href:        https://www.diagrams.net/
+    description: Diagrams.net (formerly draw.io) is a free web-based diagramming tool.
+  - title:       Microsoft Visio
+    href:        https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software
+    description: Microsoft Visio is a diagramming tool for windows.
+  - title:       OmniGraffle
+    href:        https://www.omnigroup.com/omnigraffle/
+    description: OmniGraffle is a diagramming tool for Mac.
+  - title:       Lucidchart
+    href:        https://www.lucidchart.com/
+    description: Lucidchart is a web-based diagramming tool.
+  - title:       Enterprise Architect
+    href:        https://sparxsystems.com/
+    description: Enterprise Architect (EA) is a modeling tool with support for formal methods and structured diagrams.

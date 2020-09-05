@@ -1,1 +1,8 @@
-definition: todo
+definition: Design patterns are general reusable solutions to commonly occurring problems.
+books:
+  - title: "Head First Design Patterns: A Brain-Friendly Guide"
+    isbn:  978-0132350884
+    href:  https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124/
+  - title: "Design Patterns: Elements of Reusable Object-Oriented Software"
+    isbn:  978-0201633610
+    href:  https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612

@@ -1,1 +1,10 @@
-definition: todo
+definition: Architecture diagrams are a graphical representation of a set of concepts.
+links:
+  related:
+    - Software Production > Architecture > C4
+    - Software Production > Architecture > UML
+    - Software Production > Architecture > ORM
+    - Software Production > Architecture > Tools
+  specializations:
+    - Software Production > Architecture > ER
+    - Software Production > Architecture > ArchiMate

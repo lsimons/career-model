@@ -1,1 +1,14 @@
-definition: todo
+definition: Object-Role modeling is a fact-based approach for designing databases and their business rules.
+books:
+  - title: "Information Modeling and Relational Databases"
+    isbn:  978-0123735683
+    href:  https://www.amazon.com/Information-Modeling-Relational-Databases-Management/dp/0123735688
+courses:
+  - title: "Introduction to Information Systems"
+    href: https://www.youtube.com/playlist?list=PLzr5fRV1AGV9EBDnqI73HiI39KggzWX3y
+    free: true
+    duration: 1h23m
+references:
+  - title: orm.net
+    href: http://orm.net/
+    description: Official homepage for ORM with many resources.

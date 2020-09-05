@@ -1,1 +1,6 @@
-definition: todo
+definition: Architecture models define rigid common structures for describing a software system or a part of it.
+links:
+  specializations:
+    - Software Production > Architecture > C4
+    - Software Production > Architecture > ORM
+    - Software Production > Architecture > UML

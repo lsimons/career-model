@@ -1,0 +1,39 @@
+definition: ArchiMate is a detailed and formal specification for architecture diagrams.
+links:
+  prerequisites:
+    - Software Production > Architecture > UML
+  related:
+    - Software Production > Architecture > TOGAF
+references:
+  - title: ArchiMate overview
+    href: https://www.opengroup.org/archimate-forum/archimate-overview
+    description: Official website about ArchiMate with specification and references.
+behaviors:
+  base:
+    - create architecture diagrams compliant with ArchiMate
+    - keep up to date with evolution of the ArchiMate standard
+  expert:
+    - review architecture diagrams for ArchiMate compatibility
+    - guide peers to better apply ArchiMate formalisms
+  lead:
+    - give training on ArchiMate
+    - contribute to the evolution of the ArchiMate standard
+learningPath: |-
+  <p>
+    ArchiMate is a heavyweight formal specification for architecture that is used mostly in large organizations.
+    It is best avoided for small- to medium-sized projects, where lightweight approaches such as
+    [Software Production > Architecture > C4] are sufficient. You should learn ArchiMate "on the job" when you
+    encounter a context in which its use is mandated.
+  </p>
+
+evaluation: |-
+  <p>
+    You can gain official accreditation for ArchiMate from The Open Group. If you are working in a context where
+    ArchiMate is required, the certification training and certification exam may be worth it.
+  </p>
+  <p>
+    If you do not need to conform to ArchiMate specification, investing in its rigorous application is typically a lot
+    of effort for limited benefit. Architecture diagrams are communication tools to capture the important
+    characteristics of a software system, and whether they do so effectively is generally more important than that they
+    do so in compliance with a specification such as ArchiMate.
+  </p>

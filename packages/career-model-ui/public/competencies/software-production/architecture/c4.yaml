@@ -1,1 +1,5 @@
-definition: todo
+definition: The C4 Model is a visual model for software architecture based on a hierarchy of context, containers, components, and code.
+references:
+  - title:       The C4 model for visualizing software architecture
+    href:        https://c4model.com/
+    description: Official C4 website with written documentation, video training, and other resources.

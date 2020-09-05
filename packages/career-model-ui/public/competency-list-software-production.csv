@@ -10,18 +10,18 @@ Requirements, Specification, User Experience, Usability
 Requirements, Specification, User Stories
 Requirements, Specification, NFRs
 
-Architecture, Models
-Architecture, Models, UML
-Architecture, Models, ORM
-Architecture, Models, ER
-Architecture, Models, Tools
-# Architecture, Models, Tools, EA
-Architecture, Models, Tools, Visio
-Architecture, Methods
-Architecture, Methods
-Architecture, Methods, C4
-Architecture, Design Patterns
 Architecture, Diagrams
+Architecture, Methods, Decision Records
+Architecture, Diagrams, ER
+Architecture, Models
+Architecture, Models, C4
+Architecture, Models, ORM
+Architecture, Design Patterns
+Architecture, Tools
+Architecture, Models, UML
+Architecture, Methods
+Architecture, Methods, TOGAF
+Architecture, Diagrams, ArchiMate
 
 Interaction Design
 Interaction Design, Graphics

@@ -1,0 +1,5 @@
+definition: The Open Group Architecture Framework (TOGAF) is a comprehensive method and set of tools for developing an enterprise architecture.
+references:
+  - title: TOGAF.org
+    href: http://www.togaf.org/
+    description: Official website with complete documentation and references.

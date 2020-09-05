@@ -1,1 +1,10 @@
-definition: todo
+definition: Entity-Relationship diagrams depict interrelated things of interested in a domain of knowledge.
+books:
+  - title: "Database Design for Mere Mortals: A Hands-On Guide to Relational Database Design"
+    isbn:  978-0321884497
+    href:  https://www.amazon.com/Database-Design-Mere-Mortals-Hands/dp/0321884493/
+courses:
+  - title:    Entity Relationship Diagram (ERD) Tutorial
+    href:     https://www.youtube.com/playlist?list=PLr5kTqIf6cOHSLZ_9UJe9zZGlpUVDYmO2
+    free:     true
+    duration: 21m

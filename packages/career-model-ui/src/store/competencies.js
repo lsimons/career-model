@@ -174,6 +174,9 @@ export function parseLinkSections (competencyDetailYaml) {
           }
         }
   */
+  if (!Object.prototype.hasOwnProperty.call(competencyDetailYaml, 'links')) {
+    return
+  }
   for (const [linkSectionName, linkSection] of Object.entries(competencyDetailYaml.links)) {
     competencyDetailYaml.links[linkSectionName] = linkSection.map(link => parseLink(link))
   }
@@ -190,6 +193,9 @@ export function parseTextSections (competencyDetailYaml) {
    */
   for (let i = 0; i < textSectionNames.length; i++) {
     const textSectionName = textSectionNames[i]
+    if (!Object.prototype.hasOwnProperty.call(competencyDetailYaml, textSectionName)) {
+      continue
+    }
     let textSection = competencyDetailYaml[textSectionName]
     textSection = textSection.replace(/\[([^<\]]+)]/g, function (match, p1) {
       const link = parseLink(p1)

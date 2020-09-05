@@ -87,6 +87,7 @@ class CompetenciesLoader {
       worker: true,
       download: true,
       skipEmptyLines: true,
+      fastMode: true,
       comments: '#',
       step: function (row) {
         const areaName = row.data[0]

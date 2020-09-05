@@ -1,5 +1,5 @@
 <template>
-  <v-container class="home d-flex flex-column" fluid style="min-height: 100%">
+  <v-container class="home d-flex flex-column" fluid style="min-height: 100%" v-if="$route.params.category">
     <v-row class="flex-grow-0">
       <v-col cols="12">
         <router-link to="/">Home</router-link>

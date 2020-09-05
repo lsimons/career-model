@@ -7,7 +7,7 @@
         </v-col>
       </v-row>
       <v-row v-if="expand" class="flex-grow-1" dense>
-        <v-col v-if="books.length > 0" cols="12" md="6" xl="4">
+        <v-col v-if="books && books.length > 0" cols="12" md="6" xl="4">
           <div class="competency-books">
             <h2 class="text-h6">Books</h2>
             <ul>
@@ -15,20 +15,31 @@
             </ul>
           </div>
         </v-col>
-        <v-col v-if="courses.length > 0" cols="12" md="6" xl="4">
+        <v-col v-if="courses && courses.length > 0" cols="12" md="6" xl="4">
           <div class="competency-courses">
             <h2 class="text-h6">Courses</h2>
             <ul>
-              <li v-for="course in courses" :key="JSON.stringify(course.url)">
+              <li v-for="course in courses" :key="JSON.stringify(course.href)">
                 <a :href="course.href">{{ course.title}}</a>
                 (<span v-if="course.free">free</span><span v-else>paid</span><span v-if="course.duration">, {{ course.duration }}</span>)
               </li>
             </ul>
           </div>
         </v-col>
+        <v-col v-if="references && references.length > 0" cols="12" md="6" xl="4">
+          <div class="competency-references">
+            <h2 class="text-h6">References</h2>
+            <ul>
+              <li v-for="reference in references" :key="JSON.stringify(reference.href)">
+                <a :href="reference.href">{{ reference.title}}</a>
+                - {{ reference.description }}
+              </li>
+            </ul>
+          </div>
+        </v-col>
       </v-row>
       <v-row class="flex-grow-1" dense>
-        <v-col v-if="behaviors.base.length > 0" cols="12" md="6" lg="4">
+        <v-col v-if="behaviors && behaviors.base && behaviors.base.length > 0" cols="12" md="6" lg="4">
           <div class="competency-behavior-base">
             <h2 class="text-h6">Base behavior</h2>
             <ul>
@@ -36,7 +47,7 @@
             </ul>
           </div>
         </v-col>
-        <v-col v-if="behaviors.expert.length > 0" cols="12" md="6" lg="4">
+        <v-col v-if="behaviors && behaviors.expert && behaviors.expert.length > 0" cols="12" md="6" lg="4">
           <div class="competency-behavior-expert">
             <h2 class="text-h6">Expert behavior</h2>
             <ul>
@@ -44,7 +55,7 @@
             </ul>
           </div>
         </v-col>
-        <v-col v-if="behaviors.lead.length > 0" cols="12" md="6" lg="4">
+        <v-col v-if="behaviors && behaviors.lead && behaviors.lead.length > 0" cols="12" md="6" lg="4">
           <div class="competency-behavior-lead">
             <h2 class="text-h6">Leadership behavior</h2>
             <ul>
@@ -54,7 +65,7 @@
         </v-col>
       </v-row>
       <v-row v-if="expand" class="flex-grow-1" dense>
-        <v-col v-if="links.prerequisites.length > 0" cols="12" md="6" xl="4">
+        <v-col v-if="links && links.prerequisites && links.prerequisites.length > 0" cols="12" md="6" xl="4">
           <div class="competency-prerequisites">
             <h2 class="text-h6">Prerequisites</h2>
             <ul>
@@ -66,7 +77,7 @@
             </ul>
           </div>
         </v-col>
-        <v-col v-if="links.related.length > 0" cols="12" md="6" xl="4">
+        <v-col v-if="links && links.related && links.related.length > 0" cols="12" md="6" xl="4">
           <div class="competency-related">
             <h2 class="text-h6">Related</h2>
             <ul>
@@ -78,7 +89,7 @@
             </ul>
           </div>
         </v-col>
-        <v-col v-if="links.specializations.length > 0" cols="12" md="6" xl="4">
+        <v-col v-if="links && links.specializations && links.specializations.length > 0" cols="12" md="6" xl="4">
           <div class="competency-specializations">
             <h2 class="text-h6">Specializations</h2>
             <ul>
@@ -126,6 +137,7 @@ export default {
       definition: null, // String
       books: [/* {isbn: String, href: String, title: String} */],
       courses: [/* {href: String, title: String, free?: Boolean, duration?: String} */],
+      references: [/* {href: String, title: String, description?: String} */],
       behaviors: {
         base: [/* String */],
         expert: [/* String */],

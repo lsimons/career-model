@@ -1,6 +1,6 @@
-import {parse as csvParse} from 'papaparse'
+import { parse as csvParse } from 'papaparse'
 import YAML from 'yaml/index'
-import {slug} from "./util";
+import { slug } from './util'
 
 class CompetenciesLoader {
   constructor (category, maxLevel, baseUrl) {

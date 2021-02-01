@@ -51,5 +51,4 @@ with types:
 (based on angular conventions https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)
 
 ## License
-This software is licended under Apache License v2.0. See [LICENSE](LICENSE.txt). But, it is not yet distributed publically, and so until it _is_ distributed that does not help you.
-
+This software is licended under Apache License v2.0. See [LICENSE](LICENSE.txt).

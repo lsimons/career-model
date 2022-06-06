@@ -8,6 +8,6 @@ describe('About', () => {
   it('Navigate to home', () => {
     cy.visit('/#/about')
     cy.get('#nav').contains('a', 'Home').click()
-    cy.contains('h1', 'Welcome to Career Model')
+    cy.contains('div', 'try \'Coding\' to see a fleshed-out competency')
   })
 })

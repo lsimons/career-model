@@ -216,7 +216,7 @@ class CompetencySimulation {
 
   animate () {
     const sim = this
-    setTimeout(function() {
+    setTimeout(function () {
       sim.simulation.stop()
     }, 10000)
 

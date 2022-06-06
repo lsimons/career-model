@@ -9,7 +9,7 @@ Career Model is an interactive career path planner.
 This is an early-stage work-in-progress hobby project.
 
 ## Development instructions
-Use [PowerShell Core 6+](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-6):
+Use [PowerShell Core 7+](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2):
 ```powershell
     pwsh script\bootstrap.ps1
     pwsh script\setup.ps1
@@ -48,6 +48,7 @@ with types:
 * test: Adding missing tests or correcting existing tests
 * improvement: Improves code in some other way (that is not a feat or fix)
 * chore: Changes that take care of some other kind of chore that doesn't impact the main code
+
 (based on angular conventions https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)
 
 ## License

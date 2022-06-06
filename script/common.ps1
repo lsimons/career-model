@@ -4,7 +4,7 @@ if (! (Test-Path variable:script:__CommonLoaded))
 {
     $script:__CommonLoaded = $True
 
-    function Initialize-Preferences
+    function Initialize-Preference
     {
         # Set-PSDebug -Trace 1
         # Set-Variable -Name DebugPreference       -Value "Continue" -Scope Script -Force
@@ -53,7 +53,7 @@ if (! (Test-Path variable:script:__CommonLoaded))
         . $Script
     }
 
-    function Initialize-Settings
+    function Initialize-Setting
     {
         $ScriptPath = $script:MyInvocation.MyCommand.Path
         $ScriptDir = Split-Path $ScriptPath
@@ -113,6 +113,6 @@ if (! (Test-Path variable:script:__CommonLoaded))
         }
     }
 
-    Initialize-Preferences
-    Initialize-Settings
+    Initialize-Preference
+    Initialize-Setting
 }

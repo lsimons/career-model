@@ -1,4 +1,4 @@
-export function slug(s) {
+export function slug (s) {
   if (!s) {
     return s
   }

@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit && vue-cli-service test:e2e --headless --url http://localhost:8080/"
+    "test": "vue-cli-service test:unit --passWithNoTests && vue-cli-service test:e2e --headless --url http://localhost:8080/"
   },
   "dependencies": {
     "core-js": "^3.6.5",
